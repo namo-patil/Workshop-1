@@ -25,14 +25,13 @@ public class Gambling {
                 System.out.println(stake + " ");
             }
         }
-        System.out.println("Gambler would resign for the day");
+        System.out.println("Gambler will resign for the day");
         return stake;
     }
 
     public static void main(String[] args) {
         System.out.println("Welcome to Gambling Simulation Program");
         Gambling Gambler = new Gambling();
-        Gambler.winOrLoose();
         Gambler.playGame(150,50);
     }
 }
