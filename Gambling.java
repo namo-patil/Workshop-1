@@ -50,7 +50,7 @@ public class Gambling {
 
     /* UC4- After 20 days of playing every day would like to know
         the total amount won or lost.
-        */
+     */
     public void calTotalAmountWonOrLost() {
         int num_Playing_Days = 20;
         int winLimit = 150;
