@@ -12,9 +12,10 @@ public class Gambling {
         Gambling Gambler = new Gambling();
         Gambler.winOrLoose();
         Gambler.gamblerResign();
+        Gambler.calTotalAmountWonOrLost();
     }
 
-    /*UC2- As a Gambler make $1 bet so either win or
+    /* UC2- As a Gambler make $1 bet so either win or
     loose $1
      */
     public boolean winOrLoose() {
@@ -45,6 +46,30 @@ public class Gambling {
         }
         System.out.println("Gambler has resigned for the day.");
         return stake;
+    }
+
+    /* UC4- After 20 days of playing every day would like to know
+        the total amount won or lost.
+        */
+    public void calTotalAmountWonOrLost() {
+        int num_Playing_Days = 20;
+        int winLimit = 150;
+        int looseLimit = 50;
+        int winCount = 0;
+        int loseCount = 0;
+        for (int day = 0; day < num_Playing_Days; day++) {
+            int count = gamblerResign();
+            if (count == winLimit) {
+                winCount++;
+            } else {
+                loseCount++;
+            }
+        }
+        int totalAmountWon = +winCount;
+        int totalAmountLost = +loseCount;
+        System.out.println("=====After 20 Days of playing every day=====");
+        System.out.println("Gambler Won Total Amount: $" + totalAmountWon);
+        System.out.println("Gambler Lost Total Amount: $" + totalAmountLost);
     }
 }
 
