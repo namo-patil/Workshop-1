@@ -17,7 +17,8 @@ public class Gambling {
         Gambling Gambler = new Gambling();
         //Gambler.winOrLose();
         //Gambler.gamblerResign();
-        Gambler.calTotalAmountWonOrLostIn20Days();
+        //Gambler.calTotalAmountWonOrLostIn20Days();
+        Gambler.daysWonOrLostByHowMuchInMonth();
     }
 
     /* UC2- As a Gambler make $1 bet so either win or
@@ -83,6 +84,38 @@ public class Gambling {
         int totalAmountLost = loseCount;
         System.out.println("Total amount Won: " + totalAmountWon);
         System.out.println("Total amount Lost: " + totalAmountLost);
+    }
+
+    /* UC-5 Each month would like to know the days won and lost
+    and by how much.
+     */
+    public void daysWonOrLostByHowMuchInMonth() {
+    int num_of_Days_In_Month = 30;
+    int winCount_30days = 0;
+    int loseCount_30days = 0;
+    int wonBy = 0;
+    int lostBy = 0;
+    int stake = 100;
+
+        for (int day = 1; day <= num_of_Days_In_Month; day++)
+        {
+            System.out.println("Won count for day : " + winCount);
+            int count = gamblerResign();
+            if (count == winLimit) {
+                winCount_30days++;
+                wonBy = winCount - stake;
+            } else {
+                loseCount_30days++;
+                lostBy = loseCount - stake;
+            }
+            System.out.println("===*****=====*****=====Day " + day + " Done=====*****=====*****===");
+            System.out.println();
+        }
+        System.out.println("=====In a Month (30-days)=====");
+        System.out.println("Gambler won days: " + winCount_30days);
+        System.out.println("Gambler lost days: " + loseCount_30days);
+        System.out.println("Gambler won by :" + wonBy);
+        System.out.println("Gambler lost by: " + lostBy);
     }
 }
 
