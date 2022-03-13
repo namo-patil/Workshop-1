@@ -19,7 +19,8 @@ public class Gambling {
         //Gambler.gamblerResign();
         //Gambler.calTotalAmountWonOrLostIn20Days();
         //Gambler.daysWonOrLostByHowMuchInMonth();
-        Gambler.luckiestOrUnluckiestDay();
+        //Gambler.luckiestOrUnluckiestDay();
+        Gambler.checkForNextMonthPlayOrStop();
     }
 
     /* UC2- As a Gambler make $1 bet so either win or
@@ -141,6 +142,40 @@ public class Gambling {
         System.out.println("======IN MONTH LUCKIEST OR UNLUCKIEST DAYS======");
         System.out.println("Luckiest Days : " + winCount_30days);
         System.out.println("Unluckiest Days : " + loseCount_30days);
+    }
+
+    /* UC-7 If won would like to continue playing next month or
+    stop Gambling
+     */
+    public void checkForNextMonthPlayOrStop() {
+        int num_of_Days_In_Month = 30;
+        int luckiestDays = 0;
+        int unluckiestDays = 0;
+        int luckiestDay = 0;
+        int unluckiestDay = 0;
+
+        // Same from UC-6
+        for (int day = 1; day <= num_of_Days_In_Month; day++) {
+            int countCheck = gamblerResign();
+            if (countCheck == winLimit) {
+                luckiestDay = day;
+                luckiestDays++;
+                System.out.println("--------------Luckiest day : " + luckiestDay + "-----------------");
+            } else {
+                unluckiestDays++;
+                unluckiestDay = day;
+                System.out.println("--------------Unluckiest day : " + unluckiestDay + "-----------------");
+            }
+        }
+        System.out.println();
+        System.out.println("======IN MONTH LUCKIEST OR UNLUCKIEST DAYS======");
+        System.out.println("Luckiest Days : " + luckiestDays);
+        System.out.println("Unluckiest Days : " + unluckiestDays);
+
+        if (luckiestDays > unluckiestDays)
+            System.out.println("Gambler would like to play continue in next month");
+        else
+            System.out.println("Stop Gambling");
     }
 }
 
