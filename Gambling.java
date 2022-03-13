@@ -18,7 +18,8 @@ public class Gambling {
         //Gambler.winOrLose();
         //Gambler.gamblerResign();
         //Gambler.calTotalAmountWonOrLostIn20Days();
-        Gambler.daysWonOrLostByHowMuchInMonth();
+        //Gambler.daysWonOrLostByHowMuchInMonth();
+        Gambler.luckiestOrUnluckiestDay();
     }
 
     /* UC2- As a Gambler make $1 bet so either win or
@@ -99,9 +100,8 @@ public class Gambling {
 
         for (int day = 1; day <= num_of_Days_In_Month; day++)
         {
-            System.out.println("Won count for day : " + winCount);
-            int count = gamblerResign();
-            if (count == winLimit) {
+            int countCheck = gamblerResign();
+            if (countCheck == winLimit) {
                 winCount_30days++;
                 wonBy = winCount - stake;
             } else {
@@ -116,6 +116,34 @@ public class Gambling {
         System.out.println("Gambler lost days: " + loseCount_30days);
         System.out.println("Gambler won by :" + wonBy);
         System.out.println("Gambler lost by: " + lostBy);
+    }
+
+    /* UC-6 Would also like to know my luckiest day and
+       unluckiest day
+     */
+    public void luckiestOrUnluckiestDay() {
+        int num_of_Days_In_Month = 30;
+        int winCount_30days = 0;
+        int loseCount_30days = 0;
+        int luckiestDay = 0;
+        int unluckiestDay = 0;
+        for (int day = 1; day <= num_of_Days_In_Month; day++) {
+            int countCheck = gamblerResign();
+            if (countCheck == winLimit) {
+                winCount_30days++;
+                luckiestDay = day;
+                System.out.println("<--------------Luckiest day : " + luckiestDay + "----------------->");
+            }
+            else {
+                loseCount_30days++;
+                unluckiestDay = day;
+                System.out.println("<--------------Unluckiest day : " + unluckiestDay + "----------------->");
+            }
+        }
+        System.out.println();
+        System.out.println("======IN MONTH LUCKIEST OR UNLUCKIEST DAYS======");
+        System.out.println("Luckiest Day : " + luckiestDay);
+        System.out.println("Unluckiest Day : " + unluckiestDay);
     }
 }
 
