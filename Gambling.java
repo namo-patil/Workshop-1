@@ -45,11 +45,9 @@ public class Gambling {
             if (winOrLose()) {
                 stake = stake + 1;
                 System.out.println(stake + " ");
-                winCount++;
             } else {
                 stake = stake - 1;
                 System.out.println(stake + " ");
-                loseCount++;
             }
         }
         System.out.println("Stake : " + stake + " ");
@@ -65,15 +63,17 @@ public class Gambling {
         int num_Playing_Days = 20;
         int winCount_20days = 0;
         int loseCount_20days = 0;
-        int countCheck = 0;
+
 
         for (int day = 1; day <= num_Playing_Days; day++) {
-            countCheck = gamblerResign();
+            int countCheck = gamblerResign();
 
             if (countCheck == winLimit) {
                 winCount_20days++;
+                System.out.println("Total amount won : " + countCheck);
             } else {
                 loseCount_20days++;
+                System.out.println("Total amount lost : " + countCheck);
             }
             System.out.println("===*****=====*****=====Day " + day + " Done=====*****=====*****===");
         }
@@ -82,10 +82,6 @@ public class Gambling {
         System.out.println("Gambler Won Days : " + winCount_20days);
         System.out.println("Gambler Lost Days : " + loseCount_20days);
         System.out.println();
-        int totalAmountWon = winCount;
-        int totalAmountLost = loseCount;
-        System.out.println("Total amount Won: " + totalAmountWon);
-        System.out.println("Total amount Lost: " + totalAmountLost);
     }
 
     /* UC-5 Each month would like to know the days won and lost
@@ -103,10 +99,10 @@ public class Gambling {
             int countCheck = gamblerResign();
             if (countCheck == winLimit) {
                 winCount_30days++;
-                wonBy = winCount - stake;
+                wonBy = countCheck - stake;
             } else {
                 loseCount_30days++;
-                lostBy = loseCount - stake;
+                lostBy = countCheck - stake;
             }
             System.out.println("===*****=====*****=====Day " + day + " Done=====*****=====*****===");
             System.out.println();
@@ -149,8 +145,6 @@ public class Gambling {
      */
     public void checkForNextMonthPlayOrStop() {
         int num_of_Days_In_Month = 30;
-        int luckiestDays = 0;
-        int unluckiestDays = 0;
         int luckiestDay = 0;
         int unluckiestDay = 0;
 
@@ -159,20 +153,20 @@ public class Gambling {
             int countCheck = gamblerResign();
             if (countCheck == winLimit) {
                 luckiestDay = day;
-                luckiestDays++;
+                luckiestDay++;
                 System.out.println("--------------Luckiest day : " + luckiestDay + "-----------------");
             } else {
-                unluckiestDays++;
+                unluckiestDay++;
                 unluckiestDay = day;
                 System.out.println("--------------Unluckiest day : " + unluckiestDay + "-----------------");
             }
         }
         System.out.println();
         System.out.println("======IN MONTH LUCKIEST OR UNLUCKIEST DAYS======");
-        System.out.println("Luckiest Days : " + luckiestDays);
-        System.out.println("Unluckiest Days : " + unluckiestDays);
+        System.out.println("Luckiest Days : " + luckiestDay);
+        System.out.println("Unluckiest Days : " + unluckiestDay);
 
-        if (luckiestDays > unluckiestDays)
+        if (luckiestDay > unluckiestDay)
             System.out.println("Gambler would like to play continue in next month");
         else
             System.out.println("Stop Gambling");
